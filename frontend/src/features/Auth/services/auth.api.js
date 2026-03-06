@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 let api = axios.create({
-    baseURL: 'api/auth',
+    baseURL: '/api/auth',
     withCredentials: true
 });
 
