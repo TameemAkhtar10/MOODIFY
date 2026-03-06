@@ -34,7 +34,11 @@ async function userregister(req, res) {
             message: 'token provided'
         })
     }
-    res.cookie("token", token)
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none'
+    })
     res.status(201).json({
         message: 'user registered successfullyy',
         user: {
@@ -110,7 +114,11 @@ async function getme(req, res) {
 }
 async function userlogout(req, res) {
     let token = req.cookies.token
-    res.clearCookie('token')
+    res.clearCookie('token', {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none'
+    })
     await redis.set(token, Date.now().toString(), "EX", 30 * 60)
     res.status(200).json({
         message: 'log out successfully'
