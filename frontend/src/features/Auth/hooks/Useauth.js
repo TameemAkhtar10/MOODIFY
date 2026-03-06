@@ -32,8 +32,9 @@ export let useAuth = () => {
         try {
             let data = await getme()
             setuser(data.user)
-            setloading(false)
         } catch (error) {
+            setuser(null)
+        } finally {
             setloading(false)
         }
     }
