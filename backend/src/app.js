@@ -10,7 +10,7 @@ let app = express()
 
 app.use(express.json())
 app.use(cors({
-    origin: 'https://moodify-ny2y.onrender.com'',
+    origin: 'https://moodify-ny2y.onrender.com',
     credentials: true,
 }))
 app.use(cookieparser())
